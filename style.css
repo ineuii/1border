@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.loader {
+    background-color: #40407a;
+    height: 100vh;
+    /* viewport(화면의 높이)의 100%를 차지해라 */
+}
+
+.loader .loader_blob {
+    width: 480px;
+    height: 480px;
+    background-color: #fff;
+    overflow: hidden;
+    position: relative;
+    left: calc(50% - 240px);
+    top: calc(50% - 240px);
+    /* 수평:h, 수직:v, 왼쪽:l, 오른쪽:r, 위:t, 아래쪽:b, */
+    /* border-radius: 20px 100px; //tl,br,tr,bl */
+    /* border-radius: 20px / 100px; //htl,hbr,htr,hbl / vtl,vbr,vtr,vbl */
+    animation: go 6s linear infinite alternate;
+}
+
+.loader .loader_blob img {
+    /* 이미지의 크기와 위치 수정 */
+    width: 130%;
+    position: relative;
+    left: -13%;
+}
+
+.loader .rotate{
+    width: 480px;
+    height: 480px;
+    position: absolute;
+    left: calc(50% - 240px);
+    /*  50%에서 박스의 반 만큼만 왼쪽으로 다시 계산해서 가라 */
+    top: calc(50% - 240px);
+    animation: rotate 6s linear infinite alternate;
+}
+.loader .rotate .loader_blob2{
+    width: 480px;
+    height: 480px;
+    border: 1px solid #fff;
+    animation: go 6s linear infinite alternate;
+}
+
+
+/* 크롬 fancy border radius 검색 */
+@keyframes go {
+    0% {
+        border-radius: 26% 74% 31% 69% / 61% 22% 78% 39%;
+        transform: scale(0.98);
+    }
+
+    50% {
+        border-radius: 33% 67% 30% 70% / 37% 34% 66% 63%;
+    }
+
+    100% {
+        border-radius: 71% 29% 60% 40% / 41% 22% 78% 59%;
+        transform: scale(1.02);
+    }
+}
+
+@keyframes rotate {
+    0%{transform: rotate(0deg);}/*  degree(각도) */
+    100%{transform: rotate(360deg);}
+}
